@@ -14,25 +14,33 @@ const mongoose = require("mongoose");
 //invoke app
 const app = express();
 
+// Configure CORS middleware
+app.use(cors({
+  origin: ["http://localhost:1234", "http://localhost:8000"],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+}));
 
-//declare the port to run the backend
-const PORT = process.env.PORT || 5000;
 
-
-app.use(
-  cors({
-    origin:["http://localhost:1234", "http://localhost:5000"], // Allow requests from your development origins
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Define the allowed HTTP methods
-    credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  })
-)
-
+// Configure body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  console.log('Received request body:', req.body);
+  next();
+});
 
+// Import and use your router
+const router = require('./Routes/TodoList');
+
+//route middleware
+app.use(router);
+
+
+// Configure dotenv
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -51,6 +59,11 @@ mongoose
   })
 
   .catch((err) => console.log("DB connection failed", err));
+
+
+
+//declare the port to run the backend
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
   console.log(`Backend App is running on ${PORT}`);
