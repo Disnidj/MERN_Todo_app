@@ -109,7 +109,23 @@ handleCheckboxChange = (id, checked) => {
 };
 
 
-
+// Function to handle clearing checked todos
+handleClearCheckedTodos = async () => {
+  const checkedTodos = this.state.GetAllTodos.filter(todo => todo.completed);
+  const checkedIds = checkedTodos.map(todo => todo._id);
+  try {
+      const response = await axios.delete("http://localhost:8000/DeleteCheckedTodos", {
+          data: { checkedIds } // Pass the array of checked todo IDs in the request body
+      });
+      console.log(response.data.message);
+      // Refresh the todo list after successful deletion
+      this.retrieveTodoDetalis();
+      alert("Checked todos cleared successfully");
+  } catch (error) {
+      console.error('Error clearing checked todos:', error);
+      alert("Failed to clear checked todos");
+  }
+};
 
 
 
@@ -140,6 +156,10 @@ handleCheckboxChange = (id, checked) => {
                     <i className="far fa-arrow-alt-circle-left"></i>&nbsp;Create</a>
                   </button>
 
+                  <button className="btn btn-danger" onClick={this.handleClearCheckedTodos}>
+                Clear Checked Todos
+            </button>
+
 
                   <div className="col-lg-3 my-2 mb-2" style={{marginTop:'10px', marginLeft:'170px'}}>
                 
@@ -169,10 +189,11 @@ handleCheckboxChange = (id, checked) => {
               <table className="table table-hover" style={{marginTop:'50px',  marginLeft:'170px', width:'700px'}}>
                   <thead>
                     <tr style={{fontSize:'20px'}}>
-                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>NO</th>
-                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Date</th>
-                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Topic</th>     
-                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Status</th>     
+                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>No</th>
+                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Status</th> 
+                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Todo</th>  
+                        <th scope="col" style={{color:"white",textShadow: '1px 2px 5px black'}}>Deadline</th>   
+                            
                     </tr>
                   </thead>
                   
@@ -181,19 +202,19 @@ handleCheckboxChange = (id, checked) => {
                     {filteredTodos.map((GetAllTodos,index)=>(
                     <tr key ={index} >
                         <th scope='row' style={{color:"white",textShadow: '1px 2px 5px black'}}>{index+1}</th>
-                        <td style={{color:"white",textShadow: '1px 2px 5px black'}}>{GetAllTodos.Date}</td>
-                        <td style={{textShadow: '1px 2px 5px black'}}><u><a  href={`ViewOneTodo/${GetAllTodos._id}`} style={{textDecoration:'none', color:'white', }}>
-                            {GetAllTodos.Topic}
-                            </a></u>
-                         </td> 
-                         <td>
+                        <td>
                               <input
                                   type="checkbox"
                                   checked={GetAllTodos.completed}
                                   onChange={(e) => this.handleCheckboxChange(GetAllTodos._id, e.target.checked)}
                               />
-                          </td>
+                        </td>
                       
+                        <td style={{color:"white", textShadow: '1px 2px 5px black'}}>
+                            {GetAllTodos.Topic} </td> 
+
+                         <td style={{color:"white",textShadow: '1px 2px 5px black'}}>{GetAllTodos.Date}</td>
+                         
                       
 
 

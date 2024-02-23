@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddTodo from "./components/AddTodo";
 import ViewAllTodos from "./components/ViewAllTodos";
 import UpdateTodo from "./components/UpdateTodo";
-import ViewOneTodo from "./components/ViewOneTodo";
+
 
 
 
@@ -27,10 +27,7 @@ export default function Router() {
             path="/UpdateTodo/:id"
             element={<UpdateTodo />}
           />
-          <Route
-            path="/ViewOneTodo/:id"
-            element={<ViewOneTodo />}
-          />
+         
 
         </Routes>
         

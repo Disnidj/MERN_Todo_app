@@ -20,7 +20,7 @@ const AddTodo = () => {
     
 
     const handle_Date_Change=(e)=>{
-      e.preventDefault();
+      
       setDate(e.target.value)
 
     }
@@ -123,18 +123,7 @@ const AddTodo = () => {
               
                <form onSubmit={(e) => handleSubmit(e)} >
                 <div>
-                <div className='form-group'>
-                            <label>Date :</label><br />
-                              <input 
-                              type='date' 
-                              value={Date} 
-                              className='form-control' 
-                              style={{ marginBottom: '20px' }} 
-                              onChange={(e) => handle_Date_Change(e)} 
-                              required='true' />
-                </div>
-
-                
+              
                     <div className='form-group' >
                      <label>Todo Topic :</label><br />
                         <input 
@@ -158,6 +147,18 @@ const AddTodo = () => {
                               style={{ marginBottom: '20px' }} 
                               onChange={(e) => handle_Description_Change(e)} 
                                />
+                        </div>
+
+                        <div className='form-group'>
+                            <label>Deadline :</label><br />
+                              <input 
+                              type='datetime-local' 
+                              value={Date} 
+                              name="DateTime"
+                              className='form-control' 
+                              style={{ marginBottom: '20px' }} 
+                              onChange={(e) => handle_Date_Change(e)} 
+                              required='true' />
                         </div>
                      
                         <br/>   

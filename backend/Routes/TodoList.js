@@ -109,5 +109,20 @@ router.delete("/DeleteTodo/:id", async (req, res) => {
     }
 });
 
+// Delete checked todos
+router.delete("/DeleteCheckedTodos", async (req, res) => {
+    try {
+        const { checkedIds } = req.body; // Array of todo IDs to be deleted
+        const deletedTodos = await TodoList.deleteMany({ _id: { $in: checkedIds } });
+        return res.json({
+            message: "Deleted Successfully",
+            deletedTodos
+        });
+    } catch (err) {
+        return res.status(400).json({ error: err.message });
+    }
+});
+
+
 
 module.exports=router;
