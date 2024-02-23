@@ -79,6 +79,19 @@ router.put("/UpdateTodo/:id", async (req, res) => {
     }
 });
 
+router.put("/UpdateTodocheck/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { completed } = req.body;
+        const updatedTodo = await TodoList.findByIdAndUpdate(id, { completed }, { new: true });
+        res.status(200).json({ success: true, todo: updatedTodo });
+    } catch (error) {
+        console.error('Error updating todo:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+
 
 // Delete a todo
 router.delete("/DeleteTodo/:id", async (req, res) => {

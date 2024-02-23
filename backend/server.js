@@ -14,14 +14,21 @@ const mongoose = require("mongoose");
 //invoke app
 const app = express();
 
-// Configure CORS middleware
-app.use(cors({
-  origin: ["http://localhost:1234", "http://localhost:8000"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-}));
+// // Configure CORS middleware
+// app.use(cors({
+//   origin: ["http://localhost:1234", "http://localhost:8000"],
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true,
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+// }));
+
+//middlewares
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 
 // Configure body-parser middleware
