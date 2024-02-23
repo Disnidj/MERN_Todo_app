@@ -18,7 +18,7 @@ const TodoListSchema = new mongoose.Schema({
 
     Description:{
         type:String,
-        required:true,
+        
     },
     completed: {
         type: Boolean,
