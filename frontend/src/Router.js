@@ -7,9 +7,6 @@ import ViewAllTodos from "./components/ViewAllTodos";
 import UpdateTodo from "./components/UpdateTodo";
 
 
-
-
-
 export default function Router() {
   return (
     <div>
@@ -19,6 +16,7 @@ export default function Router() {
           
 
           <Route path="/" element={<ViewAllTodos />} />
+          
           <Route
             path="/AddTodo"
             element={<AddTodo />}

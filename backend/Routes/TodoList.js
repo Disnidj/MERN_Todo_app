@@ -79,6 +79,8 @@ router.put("/UpdateTodo/:id", async (req, res) => {
     }
 });
 
+
+//check box update
 router.put("/UpdateTodocheck/:id", async (req, res) => {
     try {
         const { id } = req.params;

@@ -14,14 +14,6 @@ const mongoose = require("mongoose");
 //invoke app
 const app = express();
 
-// // Configure CORS middleware
-// app.use(cors({
-//   origin: ["http://localhost:1234", "http://localhost:8000"],
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true,
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-// }));
 
 //middlewares
 app.use(
@@ -40,7 +32,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Import and use your router
+// Import and use router
 const router = require('./Routes/TodoList');
 
 //route middleware
