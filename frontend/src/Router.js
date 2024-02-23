@@ -1,13 +1,13 @@
 import React, { Profiler, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-//Disni
+
 import AddTodo from "./components/AddTodo";
 import ViewAllTodos from "./components/ViewAllTodos";
 import UpdateTodo from "./components/UpdateTodo";
 
 
-export default function Router() {
+export default function TodoRouter() {
   return (
     <div>
       <Router>

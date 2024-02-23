@@ -1,0 +1,81 @@
+body {
+  background-color: #000;
+}
+
+.Header1 {
+  color: #f9f9fa;
+}
+
+.center-table {
+  color: #f0f8ff;
+  margin: 0 auto;
+}
+
+.center-table td {
+  text-align: center;
+  background-color: #21022b;
+}
+
+.center-table, th, td {
+  border-radius: 10px;
+}
+
+.content1 {
+  width: 750px;
+  max-width: 1000px;
+  height: 500px;
+  background-color: #892be25e;
+  border-radius: 40px;
+  margin-top: 50px;
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .content1 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.content2 {
+  width: 750px;
+  max-width: 1000px;
+  height: 500px;
+  background-color: #2b89e25e;
+  border-radius: 40px;
+  margin-top: 50px;
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .content2 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.Add_form {
+  width: 350px;
+}
+
+.content3 {
+  width: 750px;
+  max-width: 1000px;
+  height: 500px;
+  background-color: #e22bba5e;
+  border-radius: 40px;
+  margin-top: 50px;
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .content3 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/*# sourceMappingURL=index.2ae842c4.css.map */
