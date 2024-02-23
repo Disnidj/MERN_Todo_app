@@ -18,7 +18,10 @@ const app = express();
 //middlewares
 app.use(
   cors({
-    origin: "*",
+    // origin: "*",
+    origin:["https://deploy-mern-1whq.vercel.app"],
+    methods:["POST","GET","PUT","DELETE"],
+    credentials:true
   })
 );
 
