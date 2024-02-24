@@ -57,3 +57,7 @@ Open the web browser by ctrl+link(display on the frontend terminal)
 * Back-end: Node.js, Express.js
 * Database: MongoDB
 * Other: Axios, Bootstrap, React Router
+
+## Demo
+
+   ```https://peaceful-souffle-9c8f92.netlify.app/```
